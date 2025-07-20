@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- 頂部灰色區塊 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#AAA"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="上一頁"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_left" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="註冊"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="home"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home" />
+
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="其他"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_view" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="end">
+
+        <ImageView
+            android:id="@+id/img1_important"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="start"
+            android:contentDescription="必填"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_important"
+            android:tint="#8b0000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="為必填"
+            android:textColor="#8B0000"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/img2_important"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="start"
+            android:contentDescription="必填"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_important"
+            android:tint="#8b0000" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text=" 使用者名稱:"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:paddingStart="22dp"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/img3_important"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="start"
+            android:contentDescription="必填"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_important"
+            android:tint="#8b0000" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text=" 帳號(信箱):"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/mail"
+            android:layout_width="216dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:hint="(限6~20字)"
+            android:inputType="textPassword"
+            android:paddingStart="22dp"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/img4_important"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="start"
+            android:contentDescription="必填"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_important"
+            android:tint="#8b0000" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text=" 密碼:"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:hint="(限6~20字)"
+            android:inputType="textPassword"
+            android:paddingStart="22dp"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/img5_important"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="start"
+            android:contentDescription="必填"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_important"
+            android:tint="#8b0000" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text=" 確認密碼:"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/check_code"
+            android:layout_width="235dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:paddingStart="22dp"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <Button
+            android:id="@+id/btn_have"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="30dp"
+            android:background="@android:color/transparent"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:paddingStart="16dp"
+            android:text="已有帳號?"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <Button
+
+            android:id="@+id/btn_build"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="註冊"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_forgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Sign In"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>

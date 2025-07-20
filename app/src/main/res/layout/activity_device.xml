@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- 頂部灰色區塊 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#AAA"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="上一頁"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_left" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="裝置"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="其他"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_view" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/circle"
+            android:clickable="true"
+            android:contentDescription="上傳頭像"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_add" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="新增裝置"
+            android:textColor="#9B9B9B"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
