@@ -16,12 +16,24 @@
         android:background="#AAA"
         android:padding="20dp">
 
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="上一頁"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_left" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="登入"
+            android:text="初始密碼設定"
             android:textSize="20sp" />
 
         <ImageView
@@ -54,23 +66,12 @@
 
 
     <!-- Email & Password 區塊加上方框 -->
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/circle_background"
-        android:clickable="true"
-        android:contentDescription="上傳頭像"
-        android:focusable="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_hint_image" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="20dp"
         android:padding="20dp"
         app:cardCornerRadius="20dp"
@@ -88,16 +89,17 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
                 android:paddingStart="16dp"
                 android:paddingTop="16dp"
-                android:text="Email"
-                android:textSize="20sp" />
+                android:text="請輸入欲設定的密碼:"
+                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/timeSpan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Value"
+                android:hint="請輸入密碼"
                 android:inputType="textPassword"
                 android:paddingStart="22dp"
                 android:textSize="20sp" />
@@ -107,16 +109,16 @@
                 android:id="@+id/TextView01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="45dp"
                 android:paddingStart="16dp"
-                android:text="Password"
-                android:textSize="20sp" />
+                android:text="再次輸入密碼:"
+                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/weight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Value"
+                android:hint="再次輸入密碼"
                 android:inputType="textEmailAddress"
                 android:paddingStart="22dp"
                 android:textSize="20sp" />
@@ -127,53 +129,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="16dp"
                 android:paddingStart="16dp"
-                android:text="Sign in"
+                android:text="確認"
                 android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
-
-                <Button
-
-                    android:id="@+id/btn_build"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="16dp"
-                    android:paddingStart="16dp"
-                    android:text="註冊"
-                    android:textSize="20sp"
-                    android:background="@android:color/transparent"
-                    android:textColor="#000000"
-                    android:padding="0dp"
-                    android:minHeight="0dp"
-                    android:minWidth="0dp"
-                    />
-
-                <Button
-                    android:id="@+id/btn_forgot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="16dp"
-                    android:paddingStart="16dp"
-                    android:text="forgot password?"
-                    android:textSize="20sp"
-                    android:background="@android:color/transparent"
-                    android:textColor="#000000"
-                    android:padding="0dp"
-                    android:minHeight="0dp"
-                    android:minWidth="0dp"
-                    />
-            </LinearLayout>
 
         </LinearLayout>
 

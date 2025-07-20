@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Smart-Doorbell-System-app</string>
+    <string name="title_activity_register">register</string>
 </resources>

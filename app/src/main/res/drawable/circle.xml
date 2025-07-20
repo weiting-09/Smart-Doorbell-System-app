@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@android:color/transparent" />
+    <stroke
+        android:width="6dp"
+        android:color="#9B9B9B" /> <!-- 可自行更換顏色 -->
+</shape>
