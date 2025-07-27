@@ -94,11 +94,11 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/timeSpan"
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Value"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
                 android:paddingStart="22dp"
                 android:textSize="20sp" />
 
@@ -113,17 +113,17 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/weight"
+                android:id="@+id/edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Value"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:paddingStart="22dp"
                 android:textSize="20sp" />
 
             <!--sign in-->
             <Button
-                android:id="@+id/btn_sign"
+                android:id="@+id/btn_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -142,7 +142,7 @@
 
                 <Button
 
-                    android:id="@+id/btn_build"
+                    android:id="@+id/btn_signup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"

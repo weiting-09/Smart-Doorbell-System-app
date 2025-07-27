@@ -117,7 +117,7 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/edt_setUsername"
             android:layout_width="201dp"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -152,7 +152,7 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/mail"
+            android:id="@+id/edt_setEmail"
             android:layout_width="216dp"
             android:layout_height="wrap_content"
             android:gravity="end"
@@ -189,7 +189,7 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/code"
+            android:id="@+id/edt_setPassword"
             android:layout_width="281dp"
             android:layout_height="wrap_content"
             android:gravity="end"
@@ -226,7 +226,7 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/check_code"
+            android:id="@+id/edt_checkPassword"
             android:layout_width="235dp"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -269,7 +269,7 @@
 
         <Button
 
-            android:id="@+id/btn_build"
+            android:id="@+id/btn_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -279,7 +279,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btn_forgot"
+            android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"

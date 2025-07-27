@@ -1,6 +1,7 @@
 package com.example.smart_doorbell_system_app;
 
 import android.os.Bundle;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class register extends AppCompatActivity {
+
+    EditText edt_setUsername;
+    EditText edt_setEmail;
+    EditText edt_setPassword;
+    EditText edt_checkPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
