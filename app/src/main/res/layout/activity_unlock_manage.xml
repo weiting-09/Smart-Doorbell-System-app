@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 頂部灰色區塊 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#AAA"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="上一頁"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_left" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="解鎖方式管理"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="home"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home" />
+
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="其他"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_view" />
+
+    </LinearLayout>
+
+    <!-- 下半部 GridLayout 固定高度 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="508dp"
+        android:layout_marginTop="60dp">
+
+        <Button
+            android:id="@+id/btn_device1"
+            android:background="@drawable/button_gray"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
+            android:text="人臉辨識" />
+
+        <Button
+            android:id="@+id/btn_device2"
+            android:background="@drawable/button_gray"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="30dp"
+            android:text="指紋辨識" />
+
+        <Button
+            android:id="@+id/btn_device3"
+            android:background="@drawable/button_gray"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="50dp"
+            android:text="RFID/NFC" />
+
+        <Button
+            android:id="@+id/btn_device4"
+            android:background="@drawable/button_gray"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="50dp"
+            android:text="密碼" />
+    </RelativeLayout>
+
+</LinearLayout>
