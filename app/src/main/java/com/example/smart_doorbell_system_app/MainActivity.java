@@ -24,11 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-
-    private ImageView profileImage;
-    private ActivityResultLauncher<Intent> imagePickerLauncher;
     private FirebaseAuth mAuth;
-
     EditText edt_email;
     EditText edt_password;
     Button btn_login;
@@ -42,34 +38,10 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         if(user == null){   // 尚未登錄
             setContentView(R.layout.activity_main);
-            profileImage = findViewById(R.id.profileImage);
             edt_email = (EditText)findViewById(R.id.edt_email);
             edt_password = (EditText)findViewById(R.id.edt_password);
             btn_login = (Button)findViewById(R.id.btn_login);
             btn_signup = (Button)findViewById(R.id.btn_signup);
-
-            // 建立圖片選擇器的 launcher
-            imagePickerLauncher = registerForActivityResult(
-                    new ActivityResultContracts.StartActivityForResult(),
-                    new ActivityResultCallback<ActivityResult>() {
-                        @Override
-                        public void onActivityResult(ActivityResult result) {
-                            if (result.getResultCode() == Activity.RESULT_OK) {
-                                Intent data = result.getData();
-                                if (data != null && data.getData() != null) {
-                                    Uri imageUri = data.getData();
-                                    profileImage.setImageURI(imageUri);
-                                }
-                            }
-                        }
-                    });
-
-            // 點擊圖片時開啟選圖器
-            profileImage.setOnClickListener(v -> {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                imagePickerLauncher.launch(intent);
-            });
 
             // 點擊sign_in後做的動作
             btn_login.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                                         Intent intent = new Intent();
                                         intent.setClass(MainActivity.this, register.class);
                                         startActivity(intent);
+                                        finish();
                                     } else {
                                         Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
@@ -111,34 +84,10 @@ public class MainActivity extends AppCompatActivity {
             btn_signup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String user_email = edt_email.getText().toString();
-                    String user_password = edt_password.getText().toString();
-
-                    if (user_email.isEmpty()) {
-                        edt_email.setError("請輸入電子郵件");
-                        edt_email.requestFocus();
-                        return;
-                    }
-                    if (user_password.isEmpty()) {
-                        edt_password.setError("請輸入密碼");
-                        edt_password.requestFocus();
-                        return;
-                    }
-                    mAuth.createUserWithEmailAndPassword(user_email, user_password)
-                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                        // to Signup Page
-                                        Intent intent = new Intent();
-                                        intent.setClass(MainActivity.this, register.class);
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+                    // to signup Page
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this, register.class);
+                    startActivity(intent);
                 }
             });
         } else{ // 已登錄，直接跳到主畫面
@@ -146,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent();
             intent.setClass(MainActivity.this, register.class); // 導向主畫面(暫稱MainPage)
             startActivity(intent);
+            finish();
         }
 
     }

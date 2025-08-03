@@ -120,7 +120,8 @@
             android:id="@+id/edt_setUsername"
             android:layout_width="201dp"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:hint="(限6~20字)"
+            android:inputType="text"
             android:paddingStart="22dp"
             android:textSize="20sp" />
 
@@ -155,9 +156,7 @@
             android:id="@+id/edt_setEmail"
             android:layout_width="216dp"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:hint="(限6~20字)"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:paddingStart="22dp"
             android:textSize="20sp" />
 
@@ -192,7 +191,6 @@
             android:id="@+id/edt_setPassword"
             android:layout_width="281dp"
             android:layout_height="wrap_content"
-            android:gravity="end"
             android:hint="(限6~20字)"
             android:inputType="textPassword"
             android:paddingStart="22dp"
