@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(MainActivity.this, "登入成功", Toast.LENGTH_SHORT).show();
                                         // to MainPage
                                         Intent intent = new Intent();
-                                        intent.setClass(MainActivity.this, register.class);
+                                        intent.setClass(MainActivity.this, Devices.class);
                                         startActivity(intent);
                                         finish();
                                     } else {
@@ -93,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         } else{ // 已登錄，直接跳到主畫面
             // to MainPage
             Intent intent = new Intent();
-            intent.setClass(MainActivity.this, register.class); // 導向主畫面(暫稱MainPage)
+            intent.setClass(MainActivity.this, Devices.class); // 導向主畫面(暫稱MainPage)
             startActivity(intent);
             finish();
         }

@@ -27,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class register extends AppCompatActivity {
-    private ActivityResultLauncher<Intent> imagePickerLauncher;
     private FirebaseAuth mAuth;
 
     EditText edt_setUsername;
@@ -114,9 +113,9 @@ public class register extends AppCompatActivity {
                                         DatabaseReference usersRef = database.getReference("users");
                                         usersRef.child(uid).setValue(user);
 
-                                        // to Signup Page
+                                        // to device Page
                                         Intent intent = new Intent();
-                                        intent.setClass(register.this, register.class);
+                                        intent.setClass(register.this, Devices.class);
                                         startActivity(intent);
                                         finish();
                                     } else {
