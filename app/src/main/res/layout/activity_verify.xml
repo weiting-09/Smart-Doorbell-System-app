@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- 頂部灰色區塊 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#AAA"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="上一頁"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_left" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="驗證密碼"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="home"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home" />
+
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="其他"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_view" />
+
+    </LinearLayout>
+
+    <!--頭像-->
+
+
+    <!-- Email & Password 區塊加上方框 -->
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="20dp"
+        android:padding="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp">
+
+            <!--sign in-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:text="請輸入大門密碼已驗證:"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/timeSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="請輸入大門密碼"
+                android:inputType="textPassword"
+                android:paddingStart="22dp"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <!-- 註冊 按鈕靠左 -->
+                <Button
+                    android:id="@+id/btn_build"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="16dp"
+                    android:allCaps="false"
+                    android:background="@android:color/transparent"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="0dp"
+                    android:paddingStart="16dp"
+                    android:text="取消"
+                    android:textColor="#000000"
+                    android:textSize="25sp" />
+
+                <!-- 空白區域，推送確認按鈕靠右 -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <!-- 確認 按鈕靠右 -->
+                <Button
+                    android:id="@+id/btn_sign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="確認"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--註冊.forgot-->
+
+    </androidx.cardview.widget.CardView><!--方框-->
+
+</LinearLayout>
