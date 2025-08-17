@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Devices">
 
     <!-- 頂部灰色區塊 -->
     <LinearLayout
@@ -51,6 +51,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/devicesContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
@@ -84,5 +85,4 @@
             android:textSize="30sp" />
 
     </LinearLayout>
-
 </LinearLayout>
