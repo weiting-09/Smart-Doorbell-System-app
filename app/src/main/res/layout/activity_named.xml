@@ -86,7 +86,7 @@
                 android:paddingEnd="16dp" />
 
             <ImageView
-                android:id="@+id/profileImage"
+                android:id="@+id/upload_product"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
@@ -113,7 +113,7 @@
         android:paddingEnd="16dp">
 
         <EditText
-            android:id="@+id/timeSpan"
+            android:id="@+id/product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
@@ -135,7 +135,7 @@
         android:paddingEnd="16dp">
 
         <Button
-            android:id="@+id/btn_sign"
+            android:id="@+id/btn_product_rename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

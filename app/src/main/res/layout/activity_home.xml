@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 頂部灰色區塊 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#AAA"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="其他"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_view" />
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="上一頁"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_notice_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="解鎖方式管理"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="home"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_hint_image" />
+
+    </LinearLayout>
+
+    <!-- 下半部 GridLayout 固定高度 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="454dp"
+        android:layout_marginTop="150dp">
+
+        <Button
+            android:id="@+id/btn_unlock"
+            android:layout_width="360dp"
+            android:layout_height="125dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_gray"
+            android:text="大門解鎖"
+            android:textSize="34sp" />
+
+        <Button
+            android:id="@+id/btn_live_img"
+            android:layout_width="200dp"
+            android:layout_height="125dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="176dp"
+            android:background="@drawable/button_gray"
+            android:text="即時影像"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btn_message"
+            android:layout_width="150dp"
+            android:layout_height="125dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="176dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/button_gray"
+            android:text="留言板"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btn_unlock_method"
+            android:layout_width="200dp"
+            android:layout_height="125dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_gray"
+            android:text="解鎖方式管理"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btn_security_lock"
+            android:layout_width="150dp"
+            android:layout_height="125dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_gray"
+            android:text="保全上鎖"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+</LinearLayout>

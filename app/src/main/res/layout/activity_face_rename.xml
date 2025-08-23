@@ -16,12 +16,24 @@
         android:background="#AAA"
         android:padding="20dp">
 
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="上一頁"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_left" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="登入"
+            android:text="驗證密碼"
             android:textSize="20sp" />
 
         <ImageView
@@ -54,28 +66,18 @@
 
 
     <!-- Email & Password 區塊加上方框 -->
-    <ImageView
-        android:id="@+id/upload_img"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/circle_background"
-        android:clickable="true"
-        android:contentDescription="上傳頭像"
-        android:focusable="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_hint_image" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="20dp"
         android:padding="20dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp">
 
+        <!--sign in-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,98 +85,73 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp">
 
-            <!-- Email -->
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="16dp"
-                android:paddingTop="16dp"
-                android:text="Email"
-                android:textSize="20sp" />
-
             <EditText
-                android:id="@+id/edt_email"
+                android:id="@+id/face_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Value"
-                android:inputType="textEmailAddress"
-                android:paddingStart="22dp"
-                android:textSize="20sp" />
-
-            <!-- Password -->
-            <TextView
-                android:id="@+id/TextView01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingStart="16dp"
-                android:text="Password"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/edt_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Value"
+                android:layout_marginTop="100dp"
+                android:hint="face1"
                 android:inputType="textPassword"
                 android:paddingStart="22dp"
-                android:textSize="20sp" />
-
-            <!--sign in-->
-            <Button
-                android:id="@+id/btn_sign_in"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:paddingStart="16dp"
-                android:text="Sign in"
-                android:textSize="20sp" />
+                android:textSize="40sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp">
 
+                <!-- 註冊 按鈕靠左 -->
                 <Button
-
-                    android:id="@+id/btn_signup"
+                    android:id="@+id/btn_cancel_change"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_marginTop="16dp"
-                    android:paddingStart="16dp"
-                    android:text="註冊"
-                    android:textSize="20sp"
+                    android:allCaps="false"
                     android:background="@android:color/transparent"
-                    android:textColor="#000000"
-                    android:padding="0dp"
-                    android:minHeight="0dp"
                     android:minWidth="0dp"
-                    />
+                    android:minHeight="0dp"
+                    android:padding="0dp"
+                    android:paddingStart="16dp"
+                    android:text="取消變更"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
 
                 <Button
-                    android:id="@+id/btn_forgot"
+                    android:id="@+id/btn_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="70dp"
+                    android:layout_gravity="left"
                     android:layout_marginTop="16dp"
-                    android:paddingStart="16dp"
-                    android:text="forgot password?"
-                    android:textSize="20sp"
+                    android:allCaps="false"
                     android:background="@android:color/transparent"
-                    android:textColor="#000000"
-                    android:padding="0dp"
-                    android:minHeight="0dp"
                     android:minWidth="0dp"
-                    />
-            </LinearLayout>
+                    android:minHeight="0dp"
+                    android:padding="0dp"
+                    android:paddingStart="16dp"
+                    android:text="刪除"
+                    android:textColor="#F44336"
+                    android:textSize="15sp" />
 
+                <!-- 空白區域，推送確認按鈕靠右 -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <!-- 確認 按鈕靠右 -->
+                <Button
+                    android:id="@+id/btn_face_ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="確認"
+                    android:textSize="20sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <!--註冊.forgot-->
