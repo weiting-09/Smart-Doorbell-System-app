@@ -64,6 +64,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="508dp"
+
         android:layout_marginTop="20dp">
 
         <Button
@@ -107,13 +108,13 @@
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginTop="375dp"
+            android:layout_marginEnd="29dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/button_gray"
             android:text="新增"
             android:textSize="35dp" />
+
     </RelativeLayout>
 
 </LinearLayout>
