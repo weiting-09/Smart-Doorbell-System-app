@@ -6,7 +6,7 @@ public class Lock {
     public String name;
     public String location;
     public String owner;
-    public boolean status;
+    public boolean isOpened;
 
     public Map<String, String> authorized_users;
     public Map<String, String> passwords;

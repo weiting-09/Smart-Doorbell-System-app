@@ -1,5 +1,7 @@
 package com.example.smart_doorbell_system_app;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -14,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.smart_doorbell_system_app.model.UnlockLog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,9 +24,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class HomePage extends AppCompatActivity {
     private TextView txtLockName;
     private Button btnUnlock;
+    private Button btnLog;
 
     private String lockId;
     private DatabaseReference lockRef;
@@ -42,6 +49,7 @@ public class HomePage extends AppCompatActivity {
         // 取得 UI 元件
         txtLockName = findViewById(R.id.txt_LockName);
         btnUnlock = findViewById(R.id.btn_unlock);
+        btnLog = findViewById(R.id.btn_log);
 
         // 從 Intent 拿 lock_id
         lockId = getIntent().getStringExtra("lock_id");
@@ -57,16 +65,19 @@ public class HomePage extends AppCompatActivity {
         // 載入鎖的基本資料
         loadLockInfo();
 
-        // 按鈕點擊事件：解鎖 5 秒後自動上鎖
+    // 按鈕點擊事件：解鎖 5 秒後自動上鎖
         btnUnlock.setOnClickListener(v -> {
-            lockRef.child("status").setValue(true) // 解鎖
+            lockRef.child("isOpened").setValue(true) // 解鎖
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(HomePage.this, "已解鎖", Toast.LENGTH_SHORT).show();
                         Log.d("HomePage", "Lock unlocked");
 
+                        // 新增成功解鎖紀錄
+                        addUnlockLog(lockId, "APP", true);
+
                         // 5 秒後自動鎖回
                         new Handler().postDelayed(() -> {
-                            lockRef.child("status").setValue(false)
+                            lockRef.child("isOpened").setValue(false)
                                     .addOnSuccessListener(aVoid1 ->
                                             Log.d("HomePage", "Lock locked"))
                                     .addOnFailureListener(e ->
@@ -75,9 +86,21 @@ public class HomePage extends AppCompatActivity {
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(HomePage.this, "解鎖失敗", Toast.LENGTH_SHORT).show();
+                        // 新增失敗紀錄
+                        addUnlockLog(lockId, "APP", false);
+
                         Log.w("HomePage", "Unlock failed", e);
                     });
         });
+
+    // 查看解鎖紀錄
+        btnLog.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, Unlock_Log.class);
+            intent.putExtra("lockId", "lock_001"); // ⚠️這邊換成實際的 lockId
+            startActivity(intent);
+        });
+
+
     }
 
     /**
@@ -106,4 +129,37 @@ public class HomePage extends AppCompatActivity {
             }
         });
     }
+    /**
+     * 新增解鎖紀錄到 lock 的 unlock_logs
+     */
+    private void addUnlockLog(String lockId, String method, boolean success) {
+        // 取得 unlock_logs 路徑
+        DatabaseReference logsRef = FirebaseDatabase.getInstance()
+                .getReference("locks")
+                .child(lockId)
+                .child("unlock_logs");
+
+        // 自動產生唯一 key
+        String logId = logsRef.push().getKey(); // Firebase 產生唯一 key
+//        String logId = "log_" + rawKey;          // 在前面加上 "log_"
+
+        // 產生時間
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String currentTime = sdf.format(new Date());
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // 狀態文字，可用 "successed" / "failed"
+        String statusText = success ? "successed" : "failed";
+
+        // 建立 UnlockLog 物件
+        UnlockLog log = new UnlockLog(method, statusText, currentTime, uid);
+        if (logId != null) {
+            logsRef.child(logId).setValue(log)
+                    .addOnSuccessListener(aVoid -> Log.d("HomePage", "Unlock log added"))
+                    .addOnFailureListener(e -> Log.w("HomePage", "Failed to add unlock log", e));
+        }
+    }
+
 }

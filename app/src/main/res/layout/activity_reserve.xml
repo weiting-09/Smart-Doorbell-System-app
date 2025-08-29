@@ -369,12 +369,11 @@
 
         <!-- 註冊 按鈕靠左 -->
         <Button
-            android:id="@+id/btn_build"
+            android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginTop="16dp"
-            android:allCaps="false"
             android:background="@android:color/transparent"
             android:minWidth="0dp"
             android:minHeight="0dp"
@@ -385,12 +384,11 @@
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/btn_build"
+            android:id="@+id/btn_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="16dp"
-            android:allCaps="false"
             android:background="@android:color/transparent"
             android:minWidth="0dp"
             android:minHeight="0dp"
