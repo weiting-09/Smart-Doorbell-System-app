@@ -67,7 +67,7 @@
         android:layout_marginTop="60dp">
 
         <Button
-            android:id="@+id/btn_device1"
+            android:id="@+id/btn_face_manage"
             android:background="@drawable/button_gray"
             android:layout_width="150dp"
             android:layout_height="200dp"
@@ -78,7 +78,7 @@
             android:text="人臉辨識" />
 
         <Button
-            android:id="@+id/btn_device2"
+            android:id="@+id/btn_fingerprint_manage"
             android:background="@drawable/button_gray"
             android:layout_width="150dp"
             android:layout_height="200dp"
@@ -89,7 +89,7 @@
             android:text="指紋辨識" />
 
         <Button
-            android:id="@+id/btn_device3"
+            android:id="@+id/btn_rfid_manage"
             android:background="@drawable/button_gray"
             android:layout_width="150dp"
             android:layout_height="200dp"
@@ -100,7 +100,7 @@
             android:text="RFID/NFC" />
 
         <Button
-            android:id="@+id/btn_device4"
+            android:id="@+id/btn_password_manage"
             android:background="@drawable/button_gray"
             android:layout_width="150dp"
             android:layout_height="200dp"

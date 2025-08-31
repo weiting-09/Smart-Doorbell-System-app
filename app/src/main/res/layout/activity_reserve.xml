@@ -85,7 +85,7 @@
             android:paddingEnd="16dp">
 
             <EditText
-                android:id="@+id/timeSpan"
+                android:id="@+id/reserve_password"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -95,7 +95,6 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -111,7 +110,7 @@
                 android:gravity="center">
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/start_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -128,7 +127,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/start_month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -145,7 +144,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/start_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -162,7 +161,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/start_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -179,7 +178,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/start_min"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -216,7 +215,7 @@
                 android:gravity="center">
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/end_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -233,7 +232,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/end_month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -250,7 +249,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/end_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -267,7 +266,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/end_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -284,7 +283,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/timeSpan"
+                    android:id="@+id/end_min"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -325,7 +324,7 @@
                 android:gravity="center">
 
                 <CheckBox
-                    android:id="@+id/chk1"
+                    android:id="@+id/every_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -333,7 +332,7 @@
                     android:textSize="24sp" />
 
                 <CheckBox
-                    android:id="@+id/chk1"
+                    android:id="@+id/every_week"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -342,7 +341,7 @@
                     android:text="每週"
                     android:textSize="24sp" />
                 <CheckBox
-                    android:id="@+id/chk1"
+                    android:id="@+id/every_month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -369,7 +368,7 @@
 
         <!-- 註冊 按鈕靠左 -->
         <Button
-            android:id="@+id/btn_build"
+            android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
@@ -385,7 +384,7 @@
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/btn_build"
+            android:id="@+id/btn_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -408,7 +407,7 @@
 
         <!-- 確認 按鈕靠右 -->
         <Button
-            android:id="@+id/btn_sign"
+            android:id="@+id/btn_reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

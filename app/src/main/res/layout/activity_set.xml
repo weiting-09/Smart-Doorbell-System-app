@@ -96,7 +96,7 @@
                 android:textSize="25sp" />
 
             <EditText
-                android:id="@+id/timeSpan"
+                android:id="@+id/first_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="請輸入密碼"
@@ -115,7 +115,7 @@
                 android:textSize="25sp" />
 
             <EditText
-                android:id="@+id/weight"
+                android:id="@+id/first_password2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="再次輸入密碼"
@@ -125,7 +125,7 @@
 
             <!--sign in-->
             <Button
-                android:id="@+id/btn_sign"
+                android:id="@+id/btn_first_ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -136,8 +136,6 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
-
-        <!--註冊.forgot-->
 
     </androidx.cardview.widget.CardView><!--方框-->
 

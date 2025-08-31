@@ -16,6 +16,9 @@
         android:theme="@style/Theme.SmartDoorbellSystemapp"
         tools:targetApi="31">
         <activity
+            android:name=".FaceRenameActivity"
+            android:exported="false" />
+        <activity
             android:name=".Devices"
             android:exported="false" />
         <activity
