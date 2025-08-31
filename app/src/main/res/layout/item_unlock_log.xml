@@ -8,25 +8,25 @@
     android:layout_marginBottom="8dp">
 
     <TextView
-        android:id="@+id/tvMethod"
+        android:id="@+id/txt_Method"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="方式：" />
 
     <TextView
-        android:id="@+id/tvStatus"
+        android:id="@+id/txt_Status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="結果：" />
 
     <TextView
-        android:id="@+id/tvTime"
+        android:id="@+id/txt_Time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="時間：" />
 
     <TextView
-        android:id="@+id/tvUser"
+        android:id="@+id/txt_User"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="使用者：" />

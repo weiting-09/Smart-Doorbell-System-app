@@ -22,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
@@ -144,9 +145,10 @@ public class HomePage extends AppCompatActivity {
 //        String logId = "log_" + rawKey;          // 在前面加上 "log_"
 
         // 產生時間
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String currentTime = sdf.format(new Date());
+        long currentTime = System.currentTimeMillis(); // 直接存毫秒數
+//        @SuppressLint("SimpleDateFormat")
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//        String currentTime = sdf.format(new Date());
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -154,7 +156,7 @@ public class HomePage extends AppCompatActivity {
         String statusText = success ? "successed" : "failed";
 
         // 建立 UnlockLog 物件
-        UnlockLog log = new UnlockLog(method, statusText, currentTime, uid);
+        UnlockLog log = new UnlockLog(method, statusText, ServerValue.TIMESTAMP, uid);
         if (logId != null) {
             logsRef.child(logId).setValue(log)
                     .addOnSuccessListener(aVoid -> Log.d("HomePage", "Unlock log added"))

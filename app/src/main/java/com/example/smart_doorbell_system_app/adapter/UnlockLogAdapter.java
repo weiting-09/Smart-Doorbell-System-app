@@ -1,5 +1,6 @@
 package com.example.smart_doorbell_system_app.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class UnlockLogAdapter extends RecyclerView.Adapter<UnlockLogAdapter.LogViewHolder> {
 
@@ -36,11 +40,20 @@ public class UnlockLogAdapter extends RecyclerView.Adapter<UnlockLogAdapter.LogV
     @Override
     public void onBindViewHolder(@NonNull LogViewHolder holder, int position) {
         UnlockLog log = logList.get(position);
-        holder.tvMethod.setText("方式：" + log.method);
-        holder.tvStatus.setText("結果：" + log.status);
-        holder.tvTime.setText("時間：" + log.time);
+        holder.methodText.setText("方式：" + log.method);
+        holder.statusText.setText("結果：" + log.status);
+
+        // holder.timeText.setText("時間：" + log.time);
+        // 轉換時間
+        Date date = new Date((Long)log.time);
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getDefault()); // 使用裝置當前時區
+        String timeString = sdf.format(date);
+        holder.timeText.setText("時間：" + timeString);
+
         // 預設先顯示 uid，避免閃爍
-        holder.tvUser.setText("使用者：" + log.user);
+        holder.userText.setText("使用者：" + log.user);
 
         // 到 Firebase 查 username
         DatabaseReference userRef = FirebaseDatabase.getInstance()
@@ -53,7 +66,7 @@ public class UnlockLogAdapter extends RecyclerView.Adapter<UnlockLogAdapter.LogV
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String username = snapshot.getValue(String.class);
-                    holder.tvUser.setText("使用者：" + username);
+                    holder.userText.setText("使用者：" + username);
                 }
             }
 
@@ -71,14 +84,14 @@ public class UnlockLogAdapter extends RecyclerView.Adapter<UnlockLogAdapter.LogV
     }
 
     static class LogViewHolder extends RecyclerView.ViewHolder {
-        TextView tvMethod, tvStatus, tvTime, tvUser;
+        TextView methodText, statusText, timeText, userText;
 
         public LogViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvMethod = itemView.findViewById(R.id.tvMethod);
-            tvStatus = itemView.findViewById(R.id.tvStatus);
-            tvTime = itemView.findViewById(R.id.tvTime);
-            tvUser = itemView.findViewById(R.id.tvUser);
+            methodText = itemView.findViewById(R.id.txt_Method);
+            statusText = itemView.findViewById(R.id.txt_Status);
+            timeText = itemView.findViewById(R.id.txt_Time);
+            userText = itemView.findViewById(R.id.txt_User);
         }
     }
 }

@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Unlock_Log extends AppCompatActivity {
@@ -59,7 +60,7 @@ public class Unlock_Log extends AppCompatActivity {
                 .child(lockId)
                 .child("unlock_logs");
 
-        logsRef.addValueEventListener(new ValueEventListener() {
+        logsRef.orderByChild("time").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 logList.clear();
@@ -69,6 +70,7 @@ public class Unlock_Log extends AppCompatActivity {
                         logList.add(log);
                     }
                 }
+                Collections.reverse(logList);  // 反轉，讓最新在最上方
                 adapter.notifyDataSetChanged();
             }
 
