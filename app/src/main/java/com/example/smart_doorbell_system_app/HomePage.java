@@ -145,10 +145,7 @@ public class HomePage extends AppCompatActivity {
 //        String logId = "log_" + rawKey;          // 在前面加上 "log_"
 
         // 產生時間
-        long currentTime = System.currentTimeMillis(); // 直接存毫秒數
-//        @SuppressLint("SimpleDateFormat")
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//        String currentTime = sdf.format(new Date());
+        long currentTime = System.currentTimeMillis(); // 直接存時間毫秒數(裝置時間)
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -156,7 +153,7 @@ public class HomePage extends AppCompatActivity {
         String statusText = success ? "successed" : "failed";
 
         // 建立 UnlockLog 物件
-        UnlockLog log = new UnlockLog(method, statusText, ServerValue.TIMESTAMP, uid);
+        UnlockLog log = new UnlockLog(method, statusText, ServerValue.TIMESTAMP, uid);  // ServerValue.TIMESTAMP：伺服器時間
         if (logId != null) {
             logsRef.child(logId).setValue(log)
                     .addOnSuccessListener(aVoid -> Log.d("HomePage", "Unlock log added"))
