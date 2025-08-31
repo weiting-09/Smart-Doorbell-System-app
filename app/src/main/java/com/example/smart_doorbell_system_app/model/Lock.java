@@ -1,12 +1,13 @@
 package com.example.smart_doorbell_system_app.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Lock {
     public String name;
     public String location;
     public String owner;
-    public boolean status;
+    public boolean isOpened;
 
     public Map<String, String> authorized_users;
     public Map<String, String> passwords;
@@ -19,6 +20,22 @@ public class Lock {
     public Map<String, VoiceMessage> voice_messages;
 
     public Lock() {
+    }
+
+    public Lock(String name, String location, String owner) {
+        this.name = name;
+        this.location = location;
+        this.owner = owner;
+        this.isOpened = false; // 預設鎖是關的
+
+        this.authorized_users = new HashMap<>();
+        this.passwords = new HashMap<>();
+        this.NFCs = new HashMap<>();
+        this.RFIDs = new HashMap<>();
+        this.temp_passwords = new HashMap<>();
+        this.alerts = new HashMap<>();
+        this.unlock_logs = new HashMap<>();
+        this.voice_messages = new HashMap<>();
     }
 
 }
