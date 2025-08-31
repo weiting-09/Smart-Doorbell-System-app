@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="解鎖方式管理"
+            android:text="人臉辨識"
             android:textSize="20sp" />
 
         <ImageView
@@ -64,52 +64,57 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="508dp"
-        android:layout_marginTop="60dp">
+
+        android:layout_marginTop="20dp">
 
         <Button
-            android:id="@+id/btn_device1"
-            android:background="@drawable/button_gray"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:id="@+id/btn_face1"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
-            android:text="人臉辨識" />
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_gray"
+            android:text="face1"
+            android:textSize="35dp" />
 
         <Button
-            android:id="@+id/btn_device2"
-            android:background="@drawable/button_gray"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:id="@+id/btn_face2"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="145dp"
             android:layout_marginEnd="30dp"
-            android:text="指紋辨識" />
+            android:background="@drawable/button_gray"
+            android:text="face2"
+            android:textSize="35dp" />
 
         <Button
-            android:id="@+id/btn_device3"
-            android:background="@drawable/button_gray"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:id="@+id/btn_face3"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="30dp"
-            android:layout_marginBottom="50dp"
-            android:text="RFID/NFC" />
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/button_gray"
+            android:text="face3"
+            android:textSize="35dp" />
 
         <Button
-            android:id="@+id/btn_device4"
-            android:background="@drawable/button_gray"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:id="@+id/btn_add_face"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="50dp"
-            android:text="密碼" />
+            android:layout_marginTop="375dp"
+            android:layout_marginEnd="29dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_gray"
+            android:text="新增"
+            android:textSize="35dp" />
+
     </RelativeLayout>
 
 </LinearLayout>

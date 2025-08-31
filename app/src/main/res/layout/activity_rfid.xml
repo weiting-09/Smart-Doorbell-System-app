@@ -67,7 +67,7 @@
         android:layout_marginTop="20dp">
 
         <Button
-            android:id="@+id/btn_device1"
+            android:id="@+id/btn_card_manage"
             android:layout_width="350dp"
             android:layout_height="150dp"
             android:layout_alignParentStart="true"
@@ -79,7 +79,7 @@
             android:textSize="34sp" />
 
         <Button
-            android:id="@+id/btn_device3"
+            android:id="@+id/btn_phone_manage"
             android:layout_width="350dp"
             android:layout_height="150dp"
             android:layout_alignParentStart="true"

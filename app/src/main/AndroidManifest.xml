@@ -19,6 +19,9 @@
             android:name=".Unlock_Log"
             android:exported="false" />
         <activity
+            android:name=".FaceRenameActivity"
+            android:exported="false" />
+        <activity
             android:name=".Devices"
             android:exported="false" />
         <activity

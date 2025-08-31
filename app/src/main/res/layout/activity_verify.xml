@@ -96,7 +96,7 @@
                 android:textSize="25sp" />
 
             <EditText
-                android:id="@+id/timeSpan"
+                android:id="@+id/verify_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -116,7 +116,7 @@
 
                 <!-- 註冊 按鈕靠左 -->
                 <Button
-                    android:id="@+id/btn_build"
+                    android:id="@+id/btn_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
@@ -138,7 +138,7 @@
 
                 <!-- 確認 按鈕靠右 -->
                 <Button
-                    android:id="@+id/btn_sign"
+                    android:id="@+id/btn_verify_ok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
