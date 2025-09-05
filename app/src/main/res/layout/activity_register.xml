@@ -120,7 +120,6 @@
             android:id="@+id/edt_setUsername"
             android:layout_width="201dp"
             android:layout_height="wrap_content"
-            android:hint="(限6~20字)"
             android:inputType="text"
             android:paddingStart="22dp"
             android:textSize="20sp" />
@@ -227,6 +226,7 @@
             android:id="@+id/edt_checkPassword"
             android:layout_width="235dp"
             android:layout_height="wrap_content"
+            android:hint="(限6~20字)"
             android:inputType="textPassword"
             android:paddingStart="22dp"
             android:textSize="20sp" />

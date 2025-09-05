@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -24,9 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-
-public class register extends AppCompatActivity {
+public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     EditText edt_setUsername;
@@ -52,7 +49,7 @@ public class register extends AppCompatActivity {
         edt_setEmail = (EditText)findViewById(R.id.edt_setEmail);
         edt_setPassword = (EditText)findViewById(R.id.edt_setPassword);
         edt_checkPassword = (EditText)findViewById(R.id.edt_checkPassword);
-        btn_login = (Button)findViewById(R.id.btn_login);
+        btn_login = (Button)findViewById(R.id.btn_sign_in);
         btn_signup = (Button)findViewById(R.id.btn_signup);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +57,7 @@ public class register extends AppCompatActivity {
             public void onClick(View v) {
                 // to login Page
                 Intent intent = new Intent();
-                intent.setClass(register.this, MainActivity.class); // 導向主畫面(暫稱MainPage)
+                intent.setClass(Register.this, MainActivity.class); // 導向主畫面(暫稱MainPage)
                 startActivity(intent);
             }
         });
@@ -99,11 +96,11 @@ public class register extends AppCompatActivity {
                 }
                 if (user_checkPassword.equals(user_password) ){
                     mAuth.createUserWithEmailAndPassword(user_email, user_password)
-                            .addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
+                            .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(register.this, "成功註冊", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Register.this, "成功註冊", Toast.LENGTH_SHORT).show();
                                         // 取得當前使用者 UID
                                         String uid = mAuth.getCurrentUser().getUid();
                                         // 建立要儲存的使用者資料物件
@@ -115,11 +112,11 @@ public class register extends AppCompatActivity {
 
                                         // to device Page
                                         Intent intent = new Intent();
-                                        intent.setClass(register.this, Devices.class);
+                                        intent.setClass(Register.this, Devices.class);
                                         startActivity(intent);
                                         finish();
                                     } else {
-                                        Toast.makeText(register.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

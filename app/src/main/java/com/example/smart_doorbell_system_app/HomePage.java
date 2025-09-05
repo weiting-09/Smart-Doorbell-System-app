@@ -68,7 +68,7 @@ public class HomePage extends AppCompatActivity {
 
     // 按鈕點擊事件：解鎖 5 秒後自動上鎖
         btnUnlock.setOnClickListener(v -> {
-            lockRef.child("isOpened").setValue(true) // 解鎖
+            lockRef.child("allow_to_enter").setValue(true) // 解鎖
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(HomePage.this, "已解鎖", Toast.LENGTH_SHORT).show();
                         Log.d("HomePage", "Lock unlocked");
@@ -78,7 +78,7 @@ public class HomePage extends AppCompatActivity {
 
                         // 5 秒後自動鎖回
                         new Handler().postDelayed(() -> {
-                            lockRef.child("isOpened").setValue(false)
+                            lockRef.child("allow_to_enter").setValue(false)
                                     .addOnSuccessListener(aVoid1 ->
                                             Log.d("HomePage", "Lock locked"))
                                     .addOnFailureListener(e ->

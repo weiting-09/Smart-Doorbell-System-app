@@ -75,7 +75,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="30dp"
             android:layout_marginTop="50dp"
-            android:text="人臉辨識" />
+            android:text="人臉辨識"
+            android:textSize="24dp"/>
 
         <Button
             android:id="@+id/btn_fingerprint_manage"
@@ -86,7 +87,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="30dp"
-            android:text="指紋辨識" />
+            android:text="指紋辨識"
+            android:textSize="24dp"/>
 
         <Button
             android:id="@+id/btn_rfid_manage"
@@ -97,7 +99,8 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="30dp"
             android:layout_marginBottom="50dp"
-            android:text="RFID/NFC" />
+            android:text="RFID"
+            android:textSize="24dp"/>
 
         <Button
             android:id="@+id/btn_password_manage"
@@ -109,7 +112,8 @@
             android:layout_marginTop="150dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="50dp"
-            android:text="密碼" />
+            android:text="密碼"
+            android:textSize="24dp"/>
     </RelativeLayout>
 
 </LinearLayout>

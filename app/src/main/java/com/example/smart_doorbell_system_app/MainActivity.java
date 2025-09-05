@@ -1,18 +1,12 @@
 package com.example.smart_doorbell_system_app;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
             edt_email = (EditText)findViewById(R.id.edt_email);
             edt_password = (EditText)findViewById(R.id.edt_password);
-            btn_login = (Button)findViewById(R.id.btn_login);
+            btn_login = (Button)findViewById(R.id.btn_sign_in);
             btn_signup = (Button)findViewById(R.id.btn_signup);
 
             // 點擊sign_in後做的動作
@@ -85,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     // to signup Page
                     Intent intent = new Intent();
-                    intent.setClass(MainActivity.this, register.class);
+                    intent.setClass(MainActivity.this, Register.class);
                     startActivity(intent);
                 }
             });

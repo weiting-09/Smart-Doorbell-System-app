@@ -7,7 +7,7 @@ public class Lock {
     public String name;
     public String location;
     public String owner;
-    public boolean isOpened;
+    public boolean allow_to_enter;
 
     public Map<String, String> authorized_users;
     public Map<String, String> passwords;
@@ -26,7 +26,7 @@ public class Lock {
         this.name = name;
         this.location = location;
         this.owner = owner;
-        this.isOpened = false; // 預設鎖是關的
+        this.allow_to_enter = false; // 預設鎖是關的
 
         this.authorized_users = new HashMap<>();
         this.passwords = new HashMap<>();
