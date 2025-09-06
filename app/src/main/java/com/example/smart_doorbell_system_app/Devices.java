@@ -88,11 +88,37 @@ public class Devices extends AppCompatActivity {
         btn.setText("Lock: " + lockId);
         btn.setAllCaps(false);
 
-        // 按下按鈕後跳到 HomePage，並傳 lockId
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null) {
+            Toast.makeText(this, "尚未登入", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String uid = user.getUid();
+        Log.d("Devices", "Click lockId: " + lockId + ", user uid: " + uid);
+
         btn.setOnClickListener(v -> {
-            Intent intent = new Intent(Devices.this, HomePage.class);
-            intent.putExtra("lock_id", lockId);
-            startActivity(intent);
+            dbRef.child("locks").child(lockId)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Intent intent;
+                            if (snapshot.hasChild("passwords")) {
+                                // 有 passwords 欄位 → 跳 HomePage
+                                intent = new Intent(Devices.this, HomePage.class);
+                            } else {
+                                // 沒有 passwords 欄位 → 跳 Password_setting
+                                intent = new Intent(Devices.this, Password_setting.class);
+                            }
+                            intent.putExtra("lock_id", lockId);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.e("Devices", "Firebase read failed: " + error.getMessage());
+                            Toast.makeText(Devices.this, "Firebase 讀取失敗", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
 
         devicesContainer.addView(btn);

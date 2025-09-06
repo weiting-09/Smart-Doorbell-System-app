@@ -28,6 +28,9 @@
             android:name=".HomePage"
             android:exported="false" />
         <activity
+            android:name=".Password_setting"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false"
             android:label="@string/title_activity_register"
