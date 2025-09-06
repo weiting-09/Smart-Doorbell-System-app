@@ -107,7 +107,7 @@ public class Devices extends AppCompatActivity {
                                 intent = new Intent(Devices.this, HomePage.class);
                             } else {
                                 // 沒有 passwords 欄位 → 跳 Password_setting
-                                intent = new Intent(Devices.this, Password_setting.class);
+                                intent = new Intent(Devices.this, PasswordSetting.class);
                             }
                             intent.putExtra("lock_id", lockId);
                             startActivity(intent);

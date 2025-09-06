@@ -1,6 +1,5 @@
 package com.example.smart_doorbell_system_app;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,9 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class HomePage extends AppCompatActivity {
     private TextView txtLockName;
@@ -104,11 +100,11 @@ public class HomePage extends AppCompatActivity {
         });
     // 密碼管理
         btnPassword.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, Unlock_Log.class);
+            Intent intent = new Intent(HomePage.this, VerifyPassword.class);
             intent.putExtra(Constants.LOCK_ID, lockId);
+            intent.putExtra(Constants.FUNCTION_TYPE_NAME, Constants.FunctionType.PASSWORD);
             startActivity(intent);
-        });////////////////////////////////////////////////////////////////
-
+        });
 
     }
 

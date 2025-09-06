@@ -1,6 +1,7 @@
 package com.example.smart_doorbell_system_app;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,17 @@ public class PasswordManager extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button btn_change_password = findViewById(R.id.btn_change_password);
+        Button btn_reserve_password = findViewById(R.id.btn_reserve_password);
+
+        btn_change_password.setOnClickListener(v -> {
+            // Handle change password action
+        });
+
+        btn_reserve_password.setOnClickListener(v -> {
+            // Handle reserve password action
         });
     }
 }

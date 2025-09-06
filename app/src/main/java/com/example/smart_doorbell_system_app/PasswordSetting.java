@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Password_setting extends AppCompatActivity {
+public class PasswordSetting extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference dbRef;
 
