@@ -3,6 +3,8 @@ package com.example.smart_doorbell_system_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -86,7 +88,22 @@ public class Devices extends AppCompatActivity {
     private void addLockButton(final String lockId) {
         Button btn = new Button(this);
         btn.setText("Lock: " + lockId);
-        btn.setAllCaps(false);
+
+        // 設定按鈕格式
+        btn.setBackgroundResource(R.drawable.button_gray);  //背景
+        btn.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);    // 設定字體大小
+        // 建立 LayoutParams (對應 match_parent, 40dp, margin=10dp)
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                (int) TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()
+                )
+        );
+        int margin = (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics()
+        );
+        params.setMargins(margin, margin, margin, margin);
+        btn.setLayoutParams(params);
 
         // 按下按鈕後跳到 HomePage，並傳 lockId
         btn.setOnClickListener(v -> {
