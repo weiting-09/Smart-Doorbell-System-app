@@ -30,8 +30,9 @@ import java.util.Date;
 
 public class HomePage extends AppCompatActivity {
     private TextView txtLockName;
-    private Button btnUnlock;
-    private Button btnLog;
+    Button btnUnlock;
+    Button btnLog;
+    Button btnPassword;
 
     private String lockId;
     private DatabaseReference lockRef;
@@ -51,9 +52,10 @@ public class HomePage extends AppCompatActivity {
         txtLockName = findViewById(R.id.txt_LockName);
         btnUnlock = findViewById(R.id.btn_unlock);
         btnLog = findViewById(R.id.btn_log);
+        btnPassword = findViewById(R.id.btn_password_manage);
 
         // 從 Intent 拿 lock_id
-        lockId = getIntent().getStringExtra("lock_id");
+        lockId = getIntent().getStringExtra(Constants.LOCK_ID);
         if (lockId == null) {
             Toast.makeText(this, "沒有收到 lock ID", Toast.LENGTH_SHORT).show();
             finish();
@@ -97,9 +99,15 @@ public class HomePage extends AppCompatActivity {
     // 查看解鎖紀錄
         btnLog.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, Unlock_Log.class);
-            intent.putExtra("lockId", "lock_001"); // ⚠️這邊換成實際的 lockId
+            intent.putExtra(Constants.LOCK_ID, lockId);
             startActivity(intent);
         });
+    // 密碼管理
+        btnPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, Unlock_Log.class);
+            intent.putExtra(Constants.LOCK_ID, lockId);
+            startActivity(intent);
+        });////////////////////////////////////////////////////////////////
 
 
     }

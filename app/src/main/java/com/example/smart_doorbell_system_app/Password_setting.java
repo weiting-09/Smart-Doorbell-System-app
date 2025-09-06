@@ -35,7 +35,7 @@ public class Password_setting extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         dbRef = FirebaseDatabase.getInstance().getReference();
 
-        String lockId = getIntent().getStringExtra("lock_id");
+        String lockId = getIntent().getStringExtra(Constants.LOCK_ID);
 
         EditText editTextPassword = findViewById(R.id.edt_first_password);
         EditText editTextPasswordCheck = findViewById(R.id.edt_first_password_check);
@@ -81,7 +81,7 @@ public class Password_setting extends AppCompatActivity {
                             Toast.makeText(this, "密碼設定成功", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(this, HomePage.class);
-                            intent.putExtra("lock_id", lockId);
+                            intent.putExtra(Constants.LOCK_ID, lockId);
                             startActivity(intent);
 
                             finish();// 關閉 Password_setting，避免返回鍵回來

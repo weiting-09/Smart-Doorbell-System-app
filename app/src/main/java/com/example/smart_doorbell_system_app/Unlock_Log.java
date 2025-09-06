@@ -46,7 +46,7 @@ public class Unlock_Log extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         // 從 Intent 拿到 lockId
-        String lockId = getIntent().getStringExtra("lockId");
+        String lockId = getIntent().getStringExtra(Constants.LOCK_ID);
 
         if (lockId != null) {
             loadLogs(lockId);
