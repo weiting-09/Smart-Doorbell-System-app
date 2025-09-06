@@ -1,5 +1,6 @@
 package com.example.smart_doorbell_system_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -10,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class PasswordManager extends AppCompatActivity {
+    private String lockId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +24,16 @@ public class PasswordManager extends AppCompatActivity {
             return insets;
         });
 
+        lockId = getIntent().getStringExtra(Constants.LOCK_ID);
+
         Button btn_change_password = findViewById(R.id.btn_change_password);
         Button btn_reserve_password = findViewById(R.id.btn_reserve_password);
 
         btn_change_password.setOnClickListener(v -> {
-            // Handle change password action
+            Intent intent = new Intent(this, PasswordSetting.class);
+            intent.putExtra(Constants.LOCK_ID, lockId);
+            startActivity(intent);
+            //TODO: 由此按鈕進入改完密碼跳回此頁面？
         });
 
         btn_reserve_password.setOnClickListener(v -> {
