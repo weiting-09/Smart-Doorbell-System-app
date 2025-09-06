@@ -1,4 +1,4 @@
-package com.example.smart_doorbell_system_app.adapter;
+package com.example.smart_doorbell_system_app.service;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
