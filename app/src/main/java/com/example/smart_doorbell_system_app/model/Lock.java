@@ -22,9 +22,8 @@ public class Lock {
     public Lock() {
     }
 
-    public Lock(String name, String location, String owner) {
+    public Lock(String name, String owner) {
         this.name = name;
-        this.location = location;
         this.owner = owner;
         this.allow_to_enter = false; // 預設鎖是關的
 

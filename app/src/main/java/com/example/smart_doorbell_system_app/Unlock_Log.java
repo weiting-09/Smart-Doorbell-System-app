@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smart_doorbell_system_app.adapter.UnlockLogAdapter;
+import com.example.smart_doorbell_system_app.service.UnlockLogAdapter;
 import com.example.smart_doorbell_system_app.model.UnlockLog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

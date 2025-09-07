@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class HomePage extends AppCompatActivity {
     private TextView txtLockName;
     private Button btnUnlock;
     private Button btnLog;
+    private ImageView imgLock;
 
     private String lockId;
     private DatabaseReference lockRef;
@@ -50,7 +52,9 @@ public class HomePage extends AppCompatActivity {
         // 取得 UI 元件
         txtLockName = findViewById(R.id.txt_LockName);
         btnUnlock = findViewById(R.id.btn_unlock);
-        btnLog = findViewById(R.id.btn_log);
+        btnLog = findViewById(R.id.btn_unlock_log);
+        imgLock = findViewById(R.id.img_lock);
+
 
         // 從 Intent 拿 lock_id
         lockId = getIntent().getStringExtra("lock_id");
@@ -97,7 +101,7 @@ public class HomePage extends AppCompatActivity {
     // 查看解鎖紀錄
         btnLog.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, Unlock_Log.class);
-            intent.putExtra("lockId", "lock_001"); // ⚠️這邊換成實際的 lockId
+            intent.putExtra("lockId", lockId); // ⚠️這邊換成實際的 lockId
             startActivity(intent);
         });
 

@@ -144,6 +144,7 @@
                 <!-- 確認 按鈕靠右 -->
                 <Button
                     android:id="@+id/btn_face_ok"
+                    android:background="@drawable/button_gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
