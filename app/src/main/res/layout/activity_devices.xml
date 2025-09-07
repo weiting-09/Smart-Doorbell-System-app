@@ -50,39 +50,56 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/devicesContainer"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:layout_height="match_parent">
 
-        android:padding="20dp">
-
-        <ImageView
-            android:id="@+id/profileImage"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/circle"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_devices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="80dp"
             android:clickable="true"
-            android:contentDescription="上傳頭像"
-            android:focusable="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_add" />
+            app:backgroundTint="#82B688"
+            app:maxImageSize="36dp"
+            app:srcCompat="@drawable/ic_add" />
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/devicesContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
+            android:layout_marginTop="160dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="新增裝置"
-            android:textColor="#9B9B9B"
-            android:textSize="30sp" />
+            android:orientation="vertical"
 
-    </LinearLayout>
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/circle"
+                android:clickable="true"
+                android:contentDescription="上傳頭像"
+                android:focusable="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_add" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="新增裝置"
+                android:textColor="#9B9B9B"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+    </FrameLayout>
+
 </LinearLayout>
