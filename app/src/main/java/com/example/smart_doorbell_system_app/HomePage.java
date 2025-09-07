@@ -1,6 +1,5 @@
 package com.example.smart_doorbell_system_app;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,11 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class HomePage extends AppCompatActivity {
     private TextView txtLockName;
+    private Button btnPassword;
     private Button btnUnlock;
     private Button btnLog;
     private ImageView imgLock;
@@ -53,11 +50,11 @@ public class HomePage extends AppCompatActivity {
         txtLockName = findViewById(R.id.txt_LockName);
         btnUnlock = findViewById(R.id.btn_unlock);
         btnLog = findViewById(R.id.btn_unlock_log);
+        btnPassword = findViewById(R.id.btn_password_manage);
         imgLock = findViewById(R.id.img_lock);
 
-
         // 從 Intent 拿 lock_id
-        lockId = getIntent().getStringExtra("lock_id");
+        lockId = getIntent().getStringExtra(Constants.LOCK_ID);
         if (lockId == null) {
             Toast.makeText(this, "沒有收到 lock ID", Toast.LENGTH_SHORT).show();
             finish();
@@ -101,10 +98,17 @@ public class HomePage extends AppCompatActivity {
     // 查看解鎖紀錄
         btnLog.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, Unlock_Log.class);
-            intent.putExtra("lockId", lockId); // ⚠️這邊換成實際的 lockId
+            intent.putExtra(Constants.LOCK_ID, lockId);
             startActivity(intent);
         });
-
+    // 密碼管理
+        btnPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, VerifyPassword.class);
+            intent.putExtra(Constants.LOCK_ID, lockId);
+            intent.putExtra(Constants.FUNCTION_TYPE_NAME, Constants.FunctionType.PASSWORD);
+            intent.putExtra("lockId", lockId);
+            startActivity(intent);
+        });
 
     }
 

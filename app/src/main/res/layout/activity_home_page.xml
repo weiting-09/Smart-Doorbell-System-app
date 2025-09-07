@@ -60,18 +60,6 @@
 
     </LinearLayout>
 
-    <!-- 下半部 GridLayout 固定高度 -->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/img_lock"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:layout_weight="2"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        tools:srcCompat="@drawable/img_house"-->
-<!--        android:visibility="visible" />-->
-
     <ImageView
         android:id="@+id/img_lock"
         android:layout_width="match_parent"
@@ -136,7 +124,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_manage_password"
+                android:id="@+id/btn_password_manage"
                 android:layout_width="0dp"
                 android:layout_height="110dp"
                 android:layout_margin="10dp"
@@ -184,7 +172,7 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
 
 </LinearLayout>
+
