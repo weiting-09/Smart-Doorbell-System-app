@@ -1,101 +1,103 @@
 package com.example.smart_doorbell_system_app;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 public class MainActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
-    EditText edt_email;
-    EditText edt_password;
-    Button btn_login;
-    Button btn_signup;
+
+    private EditText edtEmail, edtPassword;
+    private Button btnSignIn, btnSignup, btnForgot;
+    private ImageView imgHome, imgView, uploadImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 先檢查是否登錄
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user == null){   // 尚未登錄
-            setContentView(R.layout.activity_main);
-            edt_email = (EditText)findViewById(R.id.edt_email);
-            edt_password = (EditText)findViewById(R.id.edt_password);
-            btn_login = (Button)findViewById(R.id.btn_login);
-            btn_signup = (Button)findViewById(R.id.btn_signup);
+        setContentView(R.layout.activity_main); // 對應你的 XML 檔名
 
-            // 點擊sign_in後做的動作
-            btn_login.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String user_email = edt_email.getText().toString();
-                    String user_password = edt_password.getText().toString();
+        // 取得元件
+        edtEmail = findViewById(R.id.edt_email);
+        edtPassword = findViewById(R.id.edt_password);
+        btnSignIn = findViewById(R.id.btn_sign_in);
+        btnSignup = findViewById(R.id.btn_signup);
+        btnForgot = findViewById(R.id.btn_forgot);
+        imgHome = findViewById(R.id.img_home);
+        imgView = findViewById(R.id.img_view);
+        uploadImg = findViewById(R.id.upload_img);
 
-                    if (user_email.isEmpty()) {
-                        edt_email.setError("請輸入電子郵件");
-                        edt_email.requestFocus();
-                        return;
-                    }
-                    if (user_password.isEmpty()) {
-                        edt_password.setError("請輸入密碼");
-                        edt_password.requestFocus();
-                        return;
-                    }
+        // Sign in 按鈕事件
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = edtEmail.getText().toString().trim();
+                String password = edtPassword.getText().toString().trim();
 
-                    mAuth.signInWithEmailAndPassword(user_email, user_password)
-                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(MainActivity.this, "登入成功", Toast.LENGTH_SHORT).show();
-                                        // to MainPage
-                                        Intent intent = new Intent();
-                                        intent.setClass(MainActivity.this, Devices.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "請輸入 Email 和 Password", Toast.LENGTH_SHORT).show();
+                } else {
+                    // 這裡可以放登入驗證邏輯
+                    Toast.makeText(MainActivity.this, "登入成功！", Toast.LENGTH_SHORT).show();
 
+                    // 如果要跳轉頁面
+                    // Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    // startActivity(intent);
                 }
-            });
-            // 點擊註冊後做的動作
-            btn_signup.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // to signup Page
-                    Intent intent = new Intent();
-                    intent.setClass(MainActivity.this, register.class);
-                    startActivity(intent);
-                }
-            });
-        } else{ // 已登錄，直接跳到主畫面
-            // to MainPage
-            Intent intent = new Intent();
-            intent.setClass(MainActivity.this, Devices.class); // 導向主畫面(暫稱MainPage)
-            startActivity(intent);
-            finish();
-        }
+            }
+        });
 
+        // 註冊按鈕事件
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "前往註冊頁面", Toast.LENGTH_SHORT).show();
+
+                // 註冊按鈕事件
+                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        // 忘記密碼事件
+        btnForgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "忘記密碼", Toast.LENGTH_SHORT).show();
+
+                // Intent intent = new Intent(MainActivity.this, ForgotPasswordActivity.class);
+                // startActivity(intent);
+            }
+        });
+
+        // 頭像上傳點擊
+        uploadImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "上傳頭像", Toast.LENGTH_SHORT).show();
+                // 可開啟圖片選擇器 Intent
+            }
+        });
+
+        // Home 圖示
+        imgHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "回首頁", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 其他圖示
+        imgView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "其他功能", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
