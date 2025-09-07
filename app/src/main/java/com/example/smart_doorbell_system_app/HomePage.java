@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HomePage extends AppCompatActivity {
     private TextView txtLockName;
-    Button btnUnlock;
-    Button btnLog;
-    Button btnPassword;
+    private Button btnPassword;
+    private Button btnUnlock;
+    private Button btnLog;
+    private ImageView imgLock;
 
     private String lockId;
     private DatabaseReference lockRef;
@@ -47,8 +49,9 @@ public class HomePage extends AppCompatActivity {
         // 取得 UI 元件
         txtLockName = findViewById(R.id.txt_LockName);
         btnUnlock = findViewById(R.id.btn_unlock);
-        btnLog = findViewById(R.id.btn_log);
+        btnLog = findViewById(R.id.btn_unlock_log);
         btnPassword = findViewById(R.id.btn_password_manage);
+        imgLock = findViewById(R.id.img_lock);
 
         // 從 Intent 拿 lock_id
         lockId = getIntent().getStringExtra(Constants.LOCK_ID);
@@ -103,6 +106,7 @@ public class HomePage extends AppCompatActivity {
             Intent intent = new Intent(HomePage.this, VerifyPassword.class);
             intent.putExtra(Constants.LOCK_ID, lockId);
             intent.putExtra(Constants.FUNCTION_TYPE_NAME, Constants.FunctionType.PASSWORD);
+            intent.putExtra("lockId", lockId);
             startActivity(intent);
         });
 
