@@ -124,7 +124,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_manage_password"
+                android:id="@+id/btn_password_manage"
                 android:layout_width="0dp"
                 android:layout_height="110dp"
                 android:layout_margin="10dp"
