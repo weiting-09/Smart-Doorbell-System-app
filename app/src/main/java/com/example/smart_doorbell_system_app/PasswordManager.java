@@ -37,7 +37,9 @@ public class PasswordManager extends AppCompatActivity {
         });
 
         btn_reserve_password.setOnClickListener(v -> {
-            // Handle reserve password action
+            Intent intent = new Intent(this, UnlockKeyList.class);
+            intent.putExtra(Constants.LOCK_ID, lockId);
+            startActivity(intent);
         });
     }
 }

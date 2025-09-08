@@ -16,6 +16,12 @@
         android:theme="@style/Theme.SmartDoorbellSystemapp"
         tools:targetApi="31">
         <activity
+            android:name=".ReservePassword"
+            android:exported="false" />
+        <activity
+            android:name=".UnlockKeyList"
+            android:exported="false" />
+        <activity
             android:name=".VerifyPassword"
             android:exported="false" />
         <activity
