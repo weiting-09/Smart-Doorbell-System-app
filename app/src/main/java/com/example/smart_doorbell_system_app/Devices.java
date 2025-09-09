@@ -71,7 +71,7 @@ public class Devices extends AppCompatActivity {
         String uid = user.getUid();
 
         dbRef.child("users").child(uid).child("locks")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
+                .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         devicesContainer.removeAllViews(); // 清空舊按鈕
