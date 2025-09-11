@@ -65,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/img_house" />
 
@@ -115,6 +115,7 @@
             android:layout_alignParentTop="true"
             android:layout_margin="10dp"
             android:background="@drawable/button_green"
+            android:textColor="@color/white"
             android:text="大門解鎖"
             android:textSize="34sp" />
 
@@ -130,6 +131,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="3"
                 android:background="@drawable/button_gray"
+                android:textColor="@color/white"
                 android:text="密碼管理"
                 android:textSize="24sp" />
 
@@ -140,6 +142,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_gray"
+                android:textColor="@color/white"
                 android:text="RFID管理"
                 android:textSize="24sp" />
 
@@ -157,6 +160,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="3"
                 android:background="@drawable/button_gray"
+                android:textColor="@color/white"
                 android:text="解鎖紀錄"
                 android:textSize="24sp" />
 
@@ -167,6 +171,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_gray"
+                android:textColor="@color/white"
                 android:text="保全上鎖"
                 android:textSize="24sp" />
 

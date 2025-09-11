@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -30,7 +31,7 @@ public class HomePage extends AppCompatActivity {
     private Button btnPassword;
     private Button btnUnlock;
     private Button btnLog;
-    private ImageView imgLock;
+    private Button btnSecurityLock;
 
     private String lockId;
     private DatabaseReference lockRef;
@@ -51,7 +52,7 @@ public class HomePage extends AppCompatActivity {
         btnUnlock = findViewById(R.id.btn_unlock);
         btnLog = findViewById(R.id.btn_unlock_log);
         btnPassword = findViewById(R.id.btn_password_manage);
-        imgLock = findViewById(R.id.img_lock);
+        btnSecurityLock = findViewById(R.id.btn_security_lock);
 
         // 從 Intent 拿 lock_id
         lockId = getIntent().getStringExtra(Constants.LOCK_ID);
@@ -66,6 +67,30 @@ public class HomePage extends AppCompatActivity {
 
         // 載入鎖的基本資料
         loadLockInfo();
+
+        // 讀取security_mode狀態，決定按鈕顏色
+        lockRef.child("security_mode").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Boolean securityMode = snapshot.getValue(Boolean.class);
+                if (Boolean.TRUE.equals(securityMode)) {
+                    // security_mode = true → 紅色
+                    btnSecurityLock.setBackgroundResource(R.drawable.button_red);
+                    btnSecurityLock.setTextColor(ContextCompat.getColor(HomePage.this, R.color.white));
+                    btnSecurityLock.setText("保全上鎖");
+                } else {
+                    // security_mode = false → 灰色
+                    btnSecurityLock.setBackgroundResource(R.drawable.button_gray);
+                    btnSecurityLock.setTextColor(ContextCompat.getColor(HomePage.this, R.color.white));
+                    btnSecurityLock.setText("保全上鎖");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("HomePage", "Failed to read security_mode", error.toException());
+            }
+        });
 
     // 按鈕點擊事件：解鎖 5 秒後自動上鎖
         btnUnlock.setOnClickListener(v -> {
@@ -106,8 +131,17 @@ public class HomePage extends AppCompatActivity {
             Intent intent = new Intent(HomePage.this, VerifyPassword.class);
             intent.putExtra(Constants.LOCK_ID, lockId);
             intent.putExtra(Constants.FUNCTION_TYPE_NAME, Constants.FunctionType.PASSWORD);
-            intent.putExtra("lockId", lockId);
             startActivity(intent);
+        });
+    // TODO:保全系統
+        btnSecurityLock.setOnClickListener(v->{
+            lockRef.child("security_mode").get().addOnSuccessListener(snapshot -> {
+                Boolean currentValue = snapshot.getValue(Boolean.class);
+                boolean newValue = (currentValue == null) ? false : !currentValue; // 預設 false
+                lockRef.child("security_mode").setValue(newValue);
+            }).addOnFailureListener(e -> {
+                Log.e("HomePage", "Failed to toggle security_mode", e);
+            });
         });
 
     }
