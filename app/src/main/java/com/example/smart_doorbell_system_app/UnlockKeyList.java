@@ -52,7 +52,7 @@ public class UnlockKeyList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 buttonContainer.removeAllViews();
-//                Gson gson = new Gson();
+//                Gson gson = new Gson();//僅開發使用
 
                 for (DataSnapshot child : snapshot.getChildren()) {
                     String key = child.getKey();
