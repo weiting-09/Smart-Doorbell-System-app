@@ -84,7 +84,7 @@ public class PasswordSetting extends AppCompatActivity {
                             intent.putExtra(Constants.LOCK_ID, lockId);
                             startActivity(intent);
 
-                            finish();// 關閉 Password_setting，避免返回鍵回來
+                            finish();
                         } else {
                             Exception e = task.getException();
                             Toast.makeText(this, "密碼設定失敗：" + (e != null ? e.getMessage() : "未知錯誤"), Toast.LENGTH_SHORT).show();

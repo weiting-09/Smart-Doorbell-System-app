@@ -33,7 +33,6 @@ public class PasswordManager extends AppCompatActivity {
             Intent intent = new Intent(this, PasswordSetting.class);
             intent.putExtra(Constants.LOCK_ID, lockId);
             startActivity(intent);
-            //TODO: 由此按鈕進入改完密碼跳回此頁面？
         });
 
         btn_reserve_password.setOnClickListener(v -> {

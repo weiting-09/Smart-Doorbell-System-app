@@ -1,5 +1,6 @@
 package com.example.smart_doorbell_system_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.smart_doorbell_system_app.model.ReservePassword;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,13 +52,18 @@ public class UnlockKeyList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 buttonContainer.removeAllViews();
+//                Gson gson = new Gson();
 
                 for (DataSnapshot child : snapshot.getChildren()) {
                     String key = child.getKey();
-                    if (key == null) continue;
-                    createButton(key, child);
+//                    Log.d("UnlockKeyListActivity", String.valueOf(child));
+                    ReservePassword reservePasswordModel = child.getValue(ReservePassword.class);
+//                    String json = gson.toJson(reservePasswordModel);
+//                    Log.d("UnlockKeyListActivity", String.valueOf(json));
+                    if (key == null || reservePasswordModel == null) continue;
+                    createButton(key, reservePasswordModel);
                 }
-                createButton("新增", null);
+                createButton("新增", new ReservePassword());
             }
 
             @Override
@@ -66,7 +73,10 @@ public class UnlockKeyList extends AppCompatActivity {
         });
     }
 
-    private void createButton(String key, DataSnapshot child) {
+    private void createButton(String key, ReservePassword reservePasswordModel) {
+        if (reservePasswordModel == null)
+            Toast.makeText(this, "reservePasswordModel is null" , Toast.LENGTH_SHORT).show();
+
         Button btn = new Button(UnlockKeyList.this);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -74,16 +84,24 @@ public class UnlockKeyList extends AppCompatActivity {
         );
         params.setMargins(30, 20, 30, 0);
         btn.setLayoutParams(params);
-        btn.setText(key);
+        String password_name = "";
+        if (reservePasswordModel.get_temp_password_name().isEmpty())
+            password_name = "新增";
+        else{
+            password_name = reservePasswordModel.get_temp_password_name();
+        }
+        btn.setText(password_name);
         btn.setTextSize(20);
         btn.setBackgroundResource(R.drawable.button_gray);
 
+        //TODO: only for password now
         btn.setOnClickListener(v -> {
-            if (key.equals("新增")) {
+            Intent intent = new Intent(UnlockKeyList.this, ReservePasswordSetting.class);
+            intent.putExtra(Constants.LOCK_ID, lockId);
+            intent.putExtra(Constants.KEY, key);
+            intent.putExtra("reserve_password_model", reservePasswordModel);
 
-            }else {
-                showRenameDialog(key, child);
-            }
+            startActivity(intent);
         });
 
         buttonContainer.addView(btn);
