@@ -20,13 +20,13 @@
             android:exported="false" />
         <activity
             android:name=".UnlockKeyList"
-            android:exported="true" /><!-- 需要改回false-->
+            android:exported="false" />
         <activity
             android:name=".VerifyPassword"
             android:exported="false" />
         <activity
             android:name=".PasswordManager"
-            android:exported="true" /><!-- 需要改回false-->
+            android:exported="false" />
         <activity
             android:name=".Unlock_Log"
             android:exported="false" />

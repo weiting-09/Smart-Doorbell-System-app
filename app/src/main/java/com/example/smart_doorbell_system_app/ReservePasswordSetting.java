@@ -51,7 +51,7 @@ public class ReservePasswordSetting extends AppCompatActivity {
         lockId = getIntent().getStringExtra(Constants.LOCK_ID);
         keyId = getIntent().getStringExtra(Constants.KEY);
         reserve_password_model = (ReservePassword) getIntent()
-                .getSerializableExtra("reserve_password_model");
+                .getSerializableExtra("model");
 
         EditText edt_reserve_password = findViewById(R.id.edt_reserve_password);
         EditText edt_password_name = findViewById(R.id.edt_password_name);
@@ -117,17 +117,25 @@ public class ReservePasswordSetting extends AppCompatActivity {
                 .child("temp_passwords")
                 .child(keyId);
 
-        ref.removeValue().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(this, "預約密碼刪除成功", Toast.LENGTH_SHORT).show();
+        ref.get().addOnSuccessListener(snapshot -> {
+            if (!snapshot.exists()) {
+                Toast.makeText(this, "取消新增", Toast.LENGTH_SHORT).show();
             } else {
-                Exception e = task.getException();
-                Toast.makeText(this, "刪除失敗：" + (e != null ? e.getMessage() : "未知錯誤"), Toast.LENGTH_SHORT).show();
-                Log.e("Firebase", "刪除失敗", e);
+                ref.removeValue().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(this, "預約密碼刪除成功", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Exception e = task.getException();
+                        Toast.makeText(this, "刪除失敗：" + (e != null ? e.getMessage() : "未知錯誤"), Toast.LENGTH_SHORT).show();
+                        Log.e("Firebase", "刪除失敗", e);
+                    }
+                });
             }
+        }).addOnFailureListener(e -> {
+            Toast.makeText(this, "讀取失敗：" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("Firebase", "讀取 snapshot 失敗", e);
         });
     }
-
 
     private void saveReservationPassword() {
         Map<String, Object> data = new HashMap<>();

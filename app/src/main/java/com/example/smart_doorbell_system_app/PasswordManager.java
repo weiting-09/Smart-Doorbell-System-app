@@ -38,6 +38,7 @@ public class PasswordManager extends AppCompatActivity {
         btn_reserve_password.setOnClickListener(v -> {
             Intent intent = new Intent(this, UnlockKeyList.class);
             intent.putExtra(Constants.LOCK_ID, lockId);
+            intent.putExtra(Constants.FUNCTION_TYPE_NAME, Constants.FunctionType.PASSWORD);
             startActivity(intent);
         });
     }

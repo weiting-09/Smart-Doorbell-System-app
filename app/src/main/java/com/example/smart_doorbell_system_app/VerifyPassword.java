@@ -3,7 +3,6 @@ package com.example.smart_doorbell_system_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,13 +31,12 @@ public class VerifyPassword extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        // 取得 UI 元件
+
         EditText edtPassword = findViewById(R.id.edt_verify_password);
         edtPassword.setInputType(InputType.TYPE_CLASS_NUMBER);
         Button btnCancel = findViewById(R.id.btn_cancel);
         Button btnVerify = findViewById(R.id.btn_verify_ok);
 
-        // 從 Intent 拿 lock_id
         lockId = getIntent().getStringExtra(Constants.LOCK_ID);
         function_type = (Constants.FunctionType) getIntent().getSerializableExtra(Constants.FUNCTION_TYPE_NAME);
 
@@ -82,10 +80,11 @@ public class VerifyPassword extends AppCompatActivity {
     private Intent createManagerIntent(Constants.FunctionType type, String lockId) {
         Class<?> targetClass = (type == Constants.FunctionType.PASSWORD)
                 ? PasswordManager.class
-                : PasswordManager.class; // TODO: 建立RFIDManager後 頁面後改成 RFIDManager
+                : UnlockKeyList.class;
 
         Intent intent = new Intent(this, targetClass);
         intent.putExtra(Constants.LOCK_ID, lockId);
+        intent.putExtra(Constants.FUNCTION_TYPE_NAME, type);
         return intent;
     }
 

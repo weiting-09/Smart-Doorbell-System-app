@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 public class HomePage extends AppCompatActivity {
     private TextView txtLockName;
     private Button btnPassword;
+    private Button btnRFID;
     private Button btnUnlock;
     private Button btnLog;
     private ImageView imgLock;
@@ -51,6 +52,7 @@ public class HomePage extends AppCompatActivity {
         btnUnlock = findViewById(R.id.btn_unlock);
         btnLog = findViewById(R.id.btn_unlock_log);
         btnPassword = findViewById(R.id.btn_password_manage);
+        btnRFID = findViewById(R.id.btn_manage_RFID);
         imgLock = findViewById(R.id.img_lock);
 
         // 從 Intent 拿 lock_id
@@ -106,6 +108,15 @@ public class HomePage extends AppCompatActivity {
             Intent intent = new Intent(HomePage.this, VerifyPassword.class);
             intent.putExtra(Constants.LOCK_ID, lockId);
             intent.putExtra(Constants.FUNCTION_TYPE_NAME, Constants.FunctionType.PASSWORD);
+            intent.putExtra("lockId", lockId);
+            startActivity(intent);
+        });
+
+    // RFID管理
+        btnRFID.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, VerifyPassword.class);
+            intent.putExtra(Constants.LOCK_ID, lockId);
+            intent.putExtra(Constants.FUNCTION_TYPE_NAME, Constants.FunctionType.RFID);
             intent.putExtra("lockId", lockId);
             startActivity(intent);
         });
