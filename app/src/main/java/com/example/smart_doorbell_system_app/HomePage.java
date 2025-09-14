@@ -94,30 +94,46 @@ public class HomePage extends AppCompatActivity {
 
     // 按鈕點擊事件：解鎖 5 秒後自動上鎖
         btnUnlock.setOnClickListener(v -> {
-            lockRef.child("allow_to_enter").setValue(true) // 解鎖
-                    .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(HomePage.this, "已解鎖", Toast.LENGTH_SHORT).show();
-                        Log.d("HomePage", "Lock unlocked");
+            // 先讀取security_mode的狀態，如果為 true ，則無法解鎖
+            lockRef.child("security_mode").get().addOnSuccessListener(snapshot -> {
+                Boolean securityMode = snapshot.getValue(Boolean.class);
+                if (Boolean.TRUE.equals(securityMode)) {
+                    // security_mode = true → 無法解鎖
+                    Toast.makeText(HomePage.this, "保全系統已啟動，無法解鎖", Toast.LENGTH_SHORT).show();
+                    Log.d("HomePage", "Cannot unlock, security mode is on");
+                    return;
+                }
+                lockRef.child("allow_to_enter").setValue(true) // 解鎖
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(HomePage.this, "已解鎖", Toast.LENGTH_SHORT).show();
+                            Log.d("HomePage", "Lock unlocked");
 
-                        // 新增成功解鎖紀錄
-                        addUnlockLog(lockId, "APP", true);
+                            // 新增成功解鎖紀錄
+                            addUnlockLog(lockId, "APP", true);
 
-                        // 5 秒後自動鎖回
-                        new Handler().postDelayed(() -> {
-                            lockRef.child("allow_to_enter").setValue(false)
-                                    .addOnSuccessListener(aVoid1 ->
-                                            Log.d("HomePage", "Lock locked"))
-                                    .addOnFailureListener(e ->
-                                            Log.w("HomePage", "Failed to lock", e));
-                        }, 5000);
-                    })
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(HomePage.this, "解鎖失敗", Toast.LENGTH_SHORT).show();
-                        // 新增失敗紀錄
-                        addUnlockLog(lockId, "APP", false);
+                            // 5 秒後自動鎖回
+                            new Handler().postDelayed(() -> {
+                                lockRef.child("allow_to_enter").setValue(false)
+                                        .addOnSuccessListener(aVoid1 ->
+                                                Log.d("HomePage", "Lock locked"))
+                                        .addOnFailureListener(e ->
+                                                Log.w("HomePage", "Failed to lock", e));
+                            }, 5000);
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(HomePage.this, "解鎖失敗", Toast.LENGTH_SHORT).show();
+                            // 新增失敗紀錄
+                            addUnlockLog(lockId, "APP", false);
 
-                        Log.w("HomePage", "Unlock failed", e);
-                    });
+                            Log.w("HomePage", "Unlock failed", e);
+                        });
+
+
+            }).addOnFailureListener(e -> {
+                Toast.makeText(HomePage.this, "讀取保全狀態失敗", Toast.LENGTH_SHORT).show();
+                Log.e("HomePage", "Failed to read security_mode", e);
+            });
+
         });
 
     // 查看解鎖紀錄
@@ -133,7 +149,7 @@ public class HomePage extends AppCompatActivity {
             intent.putExtra(Constants.FUNCTION_TYPE_NAME, Constants.FunctionType.PASSWORD);
             startActivity(intent);
         });
-    // TODO:保全系統
+    // 保全系統
         btnSecurityLock.setOnClickListener(v->{
             lockRef.child("security_mode").get().addOnSuccessListener(snapshot -> {
                 Boolean currentValue = snapshot.getValue(Boolean.class);
