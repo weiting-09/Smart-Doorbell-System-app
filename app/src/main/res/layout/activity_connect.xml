@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="裝置連線"
+            android:text="新增裝置"
             android:textSize="20sp" />
 
         <ImageView
@@ -50,10 +50,6 @@
 
     </LinearLayout>
 
-    <!--頭像-->
-
-
-    <!-- Email & Password 區塊加上方框 -->
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -73,30 +69,36 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp">
 
-            <!-- Email -->
-
-            <!-- Password -->
-
-            <!--sign in-->
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/txt_hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="16dp"
                 android:paddingTop="16dp"
-                android:text="請連接到裝置"
+                android:text="請輸入裝置上顯示的\n連接辨識碼"
+                android:textAlignment="center"
                 android:textSize="30sp" />
 
+            <EditText
+                android:id="@+id/edt_connect_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:inputType="text"
+                android:hint="(請輸入辨識碼)"
+                android:textAlignment="center"
+                android:textSize="22sp" />
+
             <Button
-                android:id="@+id/btn_search"
+                android:id="@+id/btn_connect"
                 android:background="@drawable/button_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:paddingStart="16dp"
-                android:text="Search"
+                android:padding="16dp"
+                android:text="連接"
                 android:textSize="20sp" />
         </LinearLayout>
 

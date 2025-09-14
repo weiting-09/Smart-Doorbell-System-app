@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +28,9 @@ import com.google.firebase.database.ValueEventListener;
 public class Devices extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference dbRef;
+
     private LinearLayout devicesContainer; // 用來放 lock 按鈕的容器
+    private FloatingActionButton fabAddDevices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +48,14 @@ public class Devices extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference();
 
         devicesContainer = findViewById(R.id.devicesContainer);
+        fabAddDevices = findViewById(R.id.fab_add_devices);
 
         loadUserLocks();
+
+        fabAddDevices.setOnClickListener(v -> {
+            Intent intent = new Intent(Devices.this, Connect.class);
+            startActivity(intent);
+        });
     }
 
 //    從 Firebase 讀取使用者擁有的 locks
@@ -62,7 +71,7 @@ public class Devices extends AppCompatActivity {
         String uid = user.getUid();
 
         dbRef.child("users").child(uid).child("locks")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
+                .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         devicesContainer.removeAllViews(); // 清空舊按鈕
@@ -126,7 +135,7 @@ public class Devices extends AppCompatActivity {
                                 // 沒有 passwords 欄位 → 跳 Password_setting
                                 intent = new Intent(Devices.this, PasswordSetting.class);
                             }
-                            intent.putExtra("lock_id", lockId);
+                            intent.putExtra(Constants.LOCK_ID, lockId);
                             startActivity(intent);
                         }
 

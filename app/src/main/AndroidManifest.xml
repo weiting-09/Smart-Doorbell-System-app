@@ -22,6 +22,9 @@
             android:name=".UnlockKeyList"
             android:exported="false" />
         <activity
+            android:name=".Connect"
+            android:exported="false" />
+        <activity
             android:name=".VerifyPassword"
             android:exported="false" />
         <activity
