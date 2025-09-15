@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +53,6 @@ public class HomePage extends AppCompatActivity {
         btnLog = findViewById(R.id.btn_unlock_log);
         btnPassword = findViewById(R.id.btn_password_manage);
         btnRFID = findViewById(R.id.btn_manage_RFID);
-        imgLock = findViewById(R.id.img_lock);
         btnSecurityLock = findViewById(R.id.btn_security_lock);
 
         // 從 Intent 拿 lock_id
