@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 public class HomePage extends AppCompatActivity {
     private TextView txtLockName;
     private Button btnPassword;
+    private Button btnRFID;
     private Button btnUnlock;
     private Button btnLog;
     private Button btnSecurityLock;
@@ -52,6 +52,7 @@ public class HomePage extends AppCompatActivity {
         btnUnlock = findViewById(R.id.btn_unlock);
         btnLog = findViewById(R.id.btn_unlock_log);
         btnPassword = findViewById(R.id.btn_password_manage);
+        btnRFID = findViewById(R.id.btn_manage_RFID);
         btnSecurityLock = findViewById(R.id.btn_security_lock);
 
         // 從 Intent 拿 lock_id
@@ -158,6 +159,15 @@ public class HomePage extends AppCompatActivity {
             }).addOnFailureListener(e -> {
                 Log.e("HomePage", "Failed to toggle security_mode", e);
             });
+        });
+
+    // RFID管理
+        btnRFID.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, VerifyPassword.class);
+            intent.putExtra(Constants.LOCK_ID, lockId);
+            intent.putExtra(Constants.FUNCTION_TYPE_NAME, Constants.FunctionType.RFID);
+            intent.putExtra("lockId", lockId);
+            startActivity(intent);
         });
 
     }

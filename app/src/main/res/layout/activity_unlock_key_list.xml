@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UnlockKeyList">
+
+    <!-- 頂部灰色區塊 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#AAA"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="上一頁"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_left" />
+
+        <!-- 改成各個不同解鎖方式名稱 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="解鎖"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="home"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home" />
+
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:contentDescription="其他"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_view" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/button_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"/>
+    </ScrollView>
+
+
+</LinearLayout>
