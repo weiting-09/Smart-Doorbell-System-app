@@ -1,38 +1,59 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+name: 錯誤回報（Bug Report）
+description: 回報你在 App 中發現的錯誤
+title: "[Bug] "
+labels: [bug]
+assignees:
+- weiting-09
 
----
+body:
+- type: markdown
+  attributes:
+  value: |
+  感謝你幫忙回報錯誤 🙌  
+  請填寫以下欄位讓我們更快重現並修正問題。
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+- type: textarea
+  id: bug-description
+  attributes:
+  label: 錯誤描述
+  description: 簡要說明你遇到的錯誤是什麼、哪裡發生、預期與實際行為有什麼差異？
+  placeholder: |
+  例如：
+  - 點擊「解鎖紀錄」後畫面一直 loading。
+  - 登入後無法顯示門鎖資料。
+  validations:
+  required: true
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+- type: textarea
+  id: steps-to-reproduce
+  attributes:
+  label: 重現步驟
+  description: 請列出讓我們能夠重現問題的具體步驟(亦可螢幕錄影重現過程)
+  placeholder: |
+  1. 打開 App
+  2. 點擊右下角「+」按鈕
+  3. 選擇「解鎖紀錄」
+  4. App 當機
+  validations:
+  required: true
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+- type: dropdown
+  id: severity
+  attributes:
+  label: 嚴重程度
+  description: 錯誤對功能的影響程度
+  options:
+  - 🟥 嚴重（完全無法使用某功能）
+  - 🟧 中等（功能異常但仍可使用）
+  - 🟨 輕微（畫面錯誤、UI 小 bug）
+  - 🟩 建議（不是 bug，但可改進）
+  default: 1
+  validations:
+  required: true
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+- type: textarea
+  id: additional-info
+  attributes:
+  label: 補充資訊 / 截圖
+  description: 若有錯誤截圖、log 訊息、螢幕錄影等，可附上說明
+  placeholder: "可貼上圖片或錯誤訊息"
