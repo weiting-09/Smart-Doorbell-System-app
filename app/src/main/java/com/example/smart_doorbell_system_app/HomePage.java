@@ -156,6 +156,10 @@ public class HomePage extends AppCompatActivity {
                 Boolean currentValue = snapshot.getValue(Boolean.class);
                 boolean newValue = (currentValue == null) ? false : !currentValue; // 預設 false
                 lockRef.child("security_mode").setValue(newValue);
+                // toast提示更新後的保全狀態
+                String message = newValue ? "保全系統已啟動" : "保全系統已關閉";
+                Toast.makeText(HomePage.this, message, Toast.LENGTH_SHORT).show();
+                Log.d("HomePage", "security_mode set to " + newValue);
             }).addOnFailureListener(e -> {
                 Log.e("HomePage", "Failed to toggle security_mode", e);
             });
