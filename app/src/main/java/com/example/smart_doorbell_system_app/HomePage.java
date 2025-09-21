@@ -81,7 +81,7 @@ public class HomePage extends AppCompatActivity {
                     btnSecurityLock.setText("保全上鎖");
                 } else {
                     // security_mode = false → 灰色
-                    btnSecurityLock.setBackgroundResource(R.drawable.button_gray);
+                    btnSecurityLock.setBackgroundResource(R.drawable.button_security);
                     btnSecurityLock.setTextColor(ContextCompat.getColor(HomePage.this, R.color.white));
                     btnSecurityLock.setText("保全上鎖");
                 }

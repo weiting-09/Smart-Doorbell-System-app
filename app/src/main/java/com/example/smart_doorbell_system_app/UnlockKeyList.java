@@ -3,15 +3,19 @@ package com.example.smart_doorbell_system_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -147,37 +151,54 @@ public class UnlockKeyList extends AppCompatActivity {
     private void showRFIDRenameDialog(String key, RFID rfidModel) {
         String oldKey = rfidModel.getName();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("重新命名 " + oldKey);
 
-        final EditText input = new EditText(this);
-        input.setHint("輸入新名稱");
-        builder.setView(input);
+        // 載入自訂 layout
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_rfid_rename, null);
+        builder.setView(dialogView);
 
-        builder.setPositiveButton("確定", (dialog, which) -> {
-            String newKey = input.getText().toString().trim();
+        TextView rename = dialogView.findViewById(R.id.txt_rename_RFID);
+        EditText edtInput = dialogView.findViewById(R.id.edt_input);
+        Button btnDelete = dialogView.findViewById(R.id.btn_delete);
+        Button btnCancel = dialogView.findViewById(R.id.btn_cancel);
+        Button btnOk = dialogView.findViewById(R.id.btn_ok);
+
+        rename.setText("重新命名 " + oldKey);
+
+        // 建立對話框
+        AlertDialog dialog = builder.show();
+        dialog.getWindow().setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.bg_round_dialog));
+
+        // 按鈕事件
+        btnOk.setOnClickListener(v -> {
+            String newKey = edtInput.getText().toString().trim();
             if (!newKey.isEmpty()) {
                 rfidModel.setName(newKey);
                 rfidRef.child("cards").child(key).setValue(rfidModel)
                         .addOnSuccessListener(aVoid -> {
                             Toast.makeText(this, "已將 " + oldKey + " 改名為 " + newKey, Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
                         })
                         .addOnFailureListener(e -> {
                             Toast.makeText(this, "更新失敗：" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });
+            } else {
+                Toast.makeText(this, "名稱不能為空", Toast.LENGTH_SHORT).show();
             }
         });
 
-        builder.setNegativeButton("取消", (dialog, which) -> dialog.cancel());
-        builder.setNeutralButton("刪除", (dialog, which) -> {
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+
+        btnDelete.setOnClickListener(v -> {
             rfidRef.child("cards").child(key).removeValue()
-                    .addOnSuccessListener(aVoid ->
-                            Toast.makeText(this, "已刪除 " + oldKey, Toast.LENGTH_SHORT).show()
-                    )
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(this, "已刪除 " + oldKey, Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    })
                     .addOnFailureListener(e ->
                             Toast.makeText(this, "刪除失敗：" + e.getMessage(), Toast.LENGTH_SHORT).show()
                     );
         });
-        builder.show();
     }
 
 }
